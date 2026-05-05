@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const expTracker = new mongoose.Schema({
+const ExpenseSchema = new mongoose.Schema({
   date: { type: String, required: true },
   item: { type: String, required: true },
   price: { type: Number, required: true },
@@ -11,3 +11,6 @@ const expTracker = new mongoose.Schema({
   },
 });
 
+const Expense = mongoose.model("Expense", ExpenseSchema);
+
+export default Expense
