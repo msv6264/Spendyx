@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+  background:#07090e;
+  font-family: 'DM Sans', sans-serif;
+}

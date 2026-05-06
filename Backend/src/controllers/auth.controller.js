@@ -12,7 +12,7 @@ export async function loginUser(req, res) {
     }
 
     const user = await User.findOne({ email });
-
+    
     if (!user) {
       return res
         .status(404)
@@ -27,7 +27,7 @@ export async function loginUser(req, res) {
 
     const token = generateToken(user._id);
 
-    res.status(200).send(token);
+    res.status(200).json(token);
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }
@@ -58,7 +58,7 @@ export async function signUpUser(req, res) {
     await newUser.save();
     const token = generateToken(newUser._id);
 
-    res.status(201).send(token);
+    res.status(201).json(token);
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }
