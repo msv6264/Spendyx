@@ -38,7 +38,7 @@ export async function updateExpenseById(req, res) {
     const id = req.params.id;
     const updates = req.body;
 
-    const updatedExpense = Expense.findOneAndUpdate(
+    const updatedExpense = await Expense.findOneAndUpdate(
       { _id: id, user: req.user.id },
       updates,
       { new: true },
@@ -49,7 +49,6 @@ export async function updateExpenseById(req, res) {
     }
 
     res.status(201).json(updatedExpense);
-
   } catch (error) {
     res.status(500).json({ message: "Error updating expense" });
   }
@@ -58,18 +57,17 @@ export async function updateExpenseById(req, res) {
 export async function deleteExpenseById(req, res) {
   try {
     const id = req.params.id;
-    
+
     const deletedExpense = await Expense.findByIdAndDelete({
       _id: id,
-      user: req.user.id
+      user: req.user.id,
     });
 
-    if(!deletedExpense){
+    if (!deletedExpense) {
       return res.status(404).json({ message: "Expense not found" });
     }
 
     res.json({ message: "Expense deleted successfully" });
-
   } catch (error) {
     res.status(500).json({ message: "Error deleting expense" });
   }
