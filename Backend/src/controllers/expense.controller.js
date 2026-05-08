@@ -58,7 +58,7 @@ export async function deleteExpenseById(req, res) {
   try {
     const id = req.params.id;
 
-    const deletedExpense = await Expense.findByIdAndDelete({
+    const deletedExpense = await Expense.findOneAndDelete({
       _id: id,
       user: req.user.id,
     });

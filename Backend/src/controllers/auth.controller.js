@@ -27,7 +27,7 @@ export async function loginUser(req, res) {
 
     const token = generateToken(user._id);
 
-    res.status(200).json(token);
+    res.status(200).json({ token });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }
@@ -40,7 +40,7 @@ export async function signUpUser(req, res) {
 
     const userExisted = await User.findOne({email});
     if (userExisted){
-        res.status(403).json({message: "User already exists with your mail !! Please login to continue"})
+        return res.status(403).json({message: "User already exists with your mail !! Please login to continue"})
     }
 
     const newUser = new User({
@@ -58,7 +58,7 @@ export async function signUpUser(req, res) {
     await newUser.save();
     const token = generateToken(newUser._id);
 
-    res.status(201).json(token);
+    res.status(201).json({ token });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }

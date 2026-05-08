@@ -7,6 +7,6 @@ const router = express.Router();
 router.get("/", authMiddleware, getAllExpenses);
 router.post("/create", authMiddleware, createExpense);
 router.post("/update/:id", authMiddleware, updateExpenseById);
-router.post("/delete/:id", authMiddleware, deleteExpenseById);
+router.delete("/delete/:id", authMiddleware, deleteExpenseById);
 
 export default router;

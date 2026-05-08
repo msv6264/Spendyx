@@ -1,8 +1,9 @@
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
+import Expenses from "./Expenses";
 
-export default function Home({ children }) {
-
+export default function Home() {
+  
   return (
     <div className="flex h-screen bg-[#090b12]">
 
@@ -13,7 +14,7 @@ export default function Home({ children }) {
         <Navbar />
 
         <main className="flex-1 overflow-y-auto p-6">
-          {children}
+          <Expenses />
         </main>
 
       </div>

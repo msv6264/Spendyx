@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { loginUser } from "../api/auth";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -11,27 +12,7 @@ export default function Login() {
     try {
       e.preventDefault();
 
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/login`, {
-        method: "POST",
-
-        headers: {
-          "Content-Type": "application/json",
-        },
-
-        body: JSON.stringify({
-          email: email,
-          password: pass,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        alert(data.message);
-        return;
-      }
-
-      localStorage.setItem("spendyx-token", data.token);
+      await loginUser(email, pass, "login");
 
       navigate("/");
     } catch (error) {

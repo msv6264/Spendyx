@@ -5,6 +5,8 @@ import auth from "./src/routes/auth.routes.js";
 import expense from "./src/routes/expense.routes.js";
 import cors from "cors";
 
+dotenv.config();
+
 const app = express();
 app.use(express.json());
 
@@ -14,8 +16,6 @@ app.use(cors({
   credentials: true,
 }));
 
-
-dotenv.config();
 
 const PORT = process.env.PORT || 5001;
 
