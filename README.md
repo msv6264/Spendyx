@@ -18,7 +18,11 @@ Spendyx is a powerful expense tracking application built on the MERN stack. It h
 - **Dotenv**: Environment variable management.
 
 ### Frontend
-- (To be populated based on development)
+- **React**: Modern UI library for building interfaces.
+- **Vite**: Next generation frontend tooling.
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development.
+- **React Router**: Declarative routing for React applications.
+- **Lucide React**: Beautiful & consistent icons.
 
 ## 🛠️ Getting Started
 
@@ -65,4 +69,4 @@ Spendyx/
 
 ## 📄 License
 
-This project is licensed under the ISC License.
+This project is licensed under the MIT License.
