@@ -2,6 +2,8 @@
 
 Spendyx is a powerful expense tracking application built on the MERN stack. It helps you manage your finances with ease, providing features for authentication and expense management.
 
+<img width="1919" height="866" alt="image" src="https://github.com/user-attachments/assets/ac6580d3-eb5c-4f1b-b1ea-afc2788d44b3" />
+
 ## ✨ Features
 
 - **User Authentication**: Secure signup and login functionality.
