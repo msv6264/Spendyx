@@ -8,6 +8,7 @@ export default function Signup() {
 
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     try {
@@ -17,8 +18,7 @@ export default function Signup() {
 
       navigate("/");
     } catch (error) {
-      console.log(error);
-      alert("Something went wrong");
+      setError(error)
     }
   }
 
@@ -74,6 +74,10 @@ export default function Signup() {
           <button type="submit" className="w-full bg-violet-600 hover:bg-violet-700 transition py-3 rounded-xl text-white font-semibold shadow-[0_0_20px_rgba(124,58,237,0.35)]">
             Create Account
           </button>
+
+          {error && (
+            <p className="text-red-500 text-sm mt-2">{error}</p>
+          )}
         </form>
 
         <p className="text-center text-slate-500 text-sm mt-6">

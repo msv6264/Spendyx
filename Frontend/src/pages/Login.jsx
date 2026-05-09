@@ -7,6 +7,7 @@ export default function Login() {
 
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     try {
@@ -16,8 +17,7 @@ export default function Login() {
 
       navigate("/");
     } catch (error) {
-      console.log(error);
-      alert("Something went wrong");
+      setError(error.message);
     }
   };
 
@@ -76,6 +76,10 @@ export default function Login() {
           >
             Login
           </button>
+
+          {error && (
+            <p className="text-red-500 text-sm mt-2">{error}</p>
+          )}
         </form>
 
         <p className="text-center text-slate-500 text-sm mt-6">
