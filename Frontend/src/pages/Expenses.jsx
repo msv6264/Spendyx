@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Pencil, Trash2, Check, ChevronDown } from "lucide-react";
-import { delExp, newExp, updExpense } from "../api/fetchWithAuth";
+import { delExp, newExp, updExpense, getAllExpenses } from "../api/fetchWithAuth";
 
 const Expenses = () => {
   const [expenses, setExpenses] = useState([]);
@@ -16,16 +16,15 @@ const Expenses = () => {
   ];
 
   useEffect(() => {
-    const token = localStorage.getItem("spendyx-token");
+    async function fetchExpenses() {
+      const token = localStorage.getItem("spendyx-token");
+      const data = await getAllExpenses(token);
+      if (data) {
+        setExpenses(data);
+      }
+    }
 
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/api/expense`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setExpenses(data))
-      .catch((err) => console.error(err));
+    fetchExpenses();
   }, []);
 
   const handleEdit = async (expense) => {

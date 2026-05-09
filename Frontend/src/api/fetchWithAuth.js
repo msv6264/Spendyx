@@ -18,6 +18,12 @@ export async function updExpense(expense, editingId, token) {
     }
   );
 
+  if (apiResponse.status === 401) {
+    localStorage.removeItem("spendyx-token");
+    window.location.href = "/login";
+    return null;
+  }
+
   return apiResponse;
 }
 
@@ -36,6 +42,12 @@ export async function newExp(expense, token) {
         },
       );
 
+    if (apiResponse.status === 401) {
+      localStorage.removeItem("spendyx-token");
+      window.location.href = "/login";
+      return null;
+    }
+
     return apiResponse;
 }
 
@@ -53,6 +65,12 @@ export async function delExp(delId, token) {
       },
     );
 
+    if (apiResponse.status === 401) {
+      localStorage.removeItem("spendyx-token");
+      window.location.href = "/login";
+      return null;
+    }
+
     return apiResponse
   };
 
@@ -69,6 +87,12 @@ export async function getAllExpenses(token) {
         },
     }
   );
+
+  if (apiResponse.status === 401) {
+    localStorage.removeItem("spendyx-token");
+    window.location.href = "/login";
+    return null;
+  }
 
   const data = await apiResponse.json();
 
