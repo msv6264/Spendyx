@@ -55,3 +55,22 @@ export async function delExp(delId, token) {
 
     return apiResponse
   };
+
+
+export async function getAllExpenses(token) {
+  const apiResponse = await fetch(
+    `${import.meta.env.VITE_BACKEND_URL}/api/expense`,
+
+    {
+      method: "GET",
+      headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+    }
+  );
+
+  const data = await apiResponse.json();
+
+  return data;
+}
